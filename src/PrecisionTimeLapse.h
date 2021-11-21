@@ -1,12 +1,9 @@
 #ifndef PRECISIONTIMELAPSE_H
 #define PRECISIONTIMELAPSE_H
 
-#pragma once
-
 #include <chrono>
 #include <string>
 #include <ratio>
-
 using namespace std;
 using namespace std::chrono; 
 
@@ -31,5 +28,5 @@ class PrecisionTimeLapse
 		string elapsedString();
 		string elapsedString(TIME_UNIT);
 };
-#endif // PRECISIONTIMELAPSE_H
+#endif
 

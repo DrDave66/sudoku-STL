@@ -18,7 +18,7 @@ int main()
 {
 
 	Puzzles p;
-	Puzzles pf("../../../../SudokuPuzzles/5000P.txt");
+	Puzzles pf("../sudoku-puzzles/10000P.txt");
 	cout << pf.getNumberOfPuzzles() << " puzzles loaded" << endl;
 	if (pf.getNumberOfPuzzles() == 0)
 		return 1;
@@ -59,6 +59,8 @@ int main()
 		sumTime += time;
 		//cout << time << " " << sumTime << "  ";
 		//cout << "Total time: " << ptl.elapsedString() << " solved " << solved << " out of " << i+1 << endl;
+        if(i % 1000 == 0)
+            cout << i << endl;
 		
 	}
 	total.stop();
