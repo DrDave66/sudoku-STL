@@ -73,21 +73,6 @@ void Sudoku::createVectors(void) {
 	for (string s : squares) {
 		allowableValues[s] = digits;
 	}
-	//for (int i = 0; i < 9; i++) {
-	//	strncpy(c_digits[i], (const char*)digits.c_str() + i, 1);
-	//	printf("digits %i %s\n", i, c_digits[i]);
-	//	strncpy(c_rows[i], (const char*)rows.c_str() + i, 1);
-	//	printf("rows %i %s\n", i, c_rows[i]);
-	//	strncpy(c_cols[i], (const char*)cols.c_str() + i, 1);
-	//	printf("cols %i %s\n", i, c_cols[i]);
-	//}
-
-	//c_crossProduct(c_rows, c_cols, c_squares);
-	//for (int i = 0; i < 81; i++) {
-	//	printf("%s\n", c_squares[i]);
-	//}
-	
-
 }
 
 void Sudoku::clearPuzzle(void) {

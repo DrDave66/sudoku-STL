@@ -51,7 +51,7 @@ public:
 	void printGuessList();
 	void test();
 private:
-//	void c_crossProduct(char** a, char** b, char** answer);
+
 	map<string, string> puzzle; // unit, value
 	string digits = "123456789";
 	string rows = "ABCDEFGHI";
