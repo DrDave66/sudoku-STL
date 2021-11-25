@@ -242,29 +242,20 @@ bool Sudoku::setValue(string square, string value) {
 	PrecisionTimeLapse ptl;
 	ptl.start();
 #endif 	
-	if (allowableValues[square].find(value) == string::npos)
-		return false;
-	allowableValues[square] = "";
+    string* s =&allowableValues[square];
+    *s = "";
 	puzzle[square] = value;
-	string temp;
 	size_t t;
-	for (string p : peers[square]) {
-		if (square == p) {
-			allowableValues[square] = "";
-		}
-		else { 
-			if (value == ".") {
-				allowableValues[square] = digits;
-			}
-			else{
-				temp = allowableValues[p];
-				t = temp.find(value);
-				if (t != string::npos) {
-					temp.replace(t, 1, "");
-					allowableValues[p] = temp;
-				}
-			}
-		}
+    if (value == ".") {
+        *s = digits;
+    }
+    
+    for (string p : peers[square]) {
+        s = &allowableValues[p];
+        t = s->find(value);
+        if (t != string::npos) {
+            s->replace(t, 1, "");
+      	}
 	}
 #ifdef TIMING
 	ptl.stop();
@@ -280,10 +271,7 @@ bool Sudoku::solveOnes(void) {
 #endif	
 	bool retval = false;
 	bool solvedSome = true;
-    uint32_t iteration = 0;
-    uint32_t maxIteration = 81;
-	while (solvedSome == true && iteration < maxIteration) {
-        iteration++;
+	while (solvedSome == true && isPuzzleSolved() == false) {
 		solvedSome = false;
 		// find squares with only one available value
 		for (string sq : squares) {
@@ -291,6 +279,7 @@ bool Sudoku::solveOnes(void) {
 				// and set the value
 				solvedSome = true;
 				setValue(sq, allowableValues[sq]);
+                //break;
 			}
 		}
 		// look through all units and see if any value appears only one time
@@ -307,6 +296,7 @@ bool Sudoku::solveOnes(void) {
 						if (count(allowableValues[u].begin(), allowableValues[u].end(), d) == 1) {
 							solvedSome = true;
 							setValue(u, string(1, d));
+                            break;
 						}
 					}
 				}
@@ -323,16 +313,21 @@ bool Sudoku::solveOnes(void) {
 
 bool Sudoku::isPuzzleSolved(void) {
 	// a puzzle is solved if each unit in unitlist contains values of 1-9
-	set<string> unitSet;
+    string val = "123456789";
 	for (vector<string> ul : unitlist) {
-		unitSet.clear();
+        val = "123456789";
 		for (string u : ul) {
-			unitSet.insert(puzzle[u]);
+            size_t vp = val.find(puzzle[u]);
+            if(vp != string::npos) {
+                val = val.replace(vp,1,"");
+            } else {
+                return false;
+            }
+
 		}
-		if (unitSet != digitSet)
-			return false;
+        if(val.length() != 0)
+            return false;
 	}
-	
     return true;
 }
 

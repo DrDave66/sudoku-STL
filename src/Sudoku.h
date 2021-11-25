@@ -12,6 +12,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <ctime>
+#include <array>
 
 using namespace std;
 #include "Guess.h"
@@ -63,7 +64,7 @@ private:
 	map<string, string> allowableValues; // square, string of allowable values
 	vector<Guess> guessList; // ordered list of guesses
 	Guess newGuess;
-	set<string> digitSet = { "1","2","3","4","5","6","7","8","9" };
+	array<char, 9> digitArray = { '1','2','3','4','5','6','7','8','9' };
 };
 
 #endif // _SUDOKU

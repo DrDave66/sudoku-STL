@@ -12,13 +12,25 @@ string easy505 = "1..92....524.1...........7..5...81.2.........4.27...9..6......
 string grid2 =   "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......";
 string hard1 =   ".....6....59.....82....8....45........3........6..3.54...325..6..................";
 string easy506 = ".43.8.25.6.............1.949....4.7....6.8....1.2....382.5.............5.34.9.71.";
+string solved1 = "981543627723698145645712938368159274417326589592487316854931762236875491179264853";
+string solved2 = "968531724514792638237468519326945187185327946479186253891273465753614892642859371";
+string solved3 = "487365219932841756165297384524916837319758462876432591793184625641523978258679143";
+string solved4 = "647391582125687394938542617264915873891736425753824961319258746486173259572469138";
+string solvedx = ".47391582125687394938542617264915873891736425753824961319258746486173259572469138";
 #define sPRINTING
 
+#define aSHORTMAIN
+
+#ifdef SHORTMAIN
+int main() {
+
+}
+#else
 int main()
 {
 
 	Puzzles p;
-	Puzzles pf("../sudoku-puzzles/10000P.txt");
+	Puzzles pf("../sudoku-puzzles/100000P.txt");
 	cout << pf.getNumberOfPuzzles() << " puzzles loaded" << endl;
 	if (pf.getNumberOfPuzzles() == 0)
 		return 1;
@@ -68,9 +80,12 @@ int main()
     cout << "Solved " << solved << " out of " << pf.getNumberOfPuzzles() << " puzzles\n";
 	cout << "Min time: " << minTime*1000.0 << " ms, Max time: " << maxTime*1000.0 << " ms, Average Time: " << (double)sumTime / (double)solved * 1000 << " ms, Total: " << total.elapsedString(SEC) << " sec" << endl;
 }
-
-
-// time for 10000P.txt - Min time: 0.2968 ms, Max time: 1.1741 ms, Average Time: 0.468564 ms, Total: 8.292689 sec
+#endif
+// added break to loops in solve1   Min time: 0.066761 ms, Max time: 34.5678 ms, Average Time: 0.0777364 ms, Total: 11.696870 sec
+// added isSolved to solveones loop Min time: 0.074234 ms, Max time: 9.53254 ms, Average Time: 0.0830398 ms, Total: 12.504442 sec
+// 100000P improved isPuzzleSolved  Min time: 0.078599 ms, Max time: 20.8862 ms, Average Time: 0.0918014 ms, Total: 13.866896 sec
+// 10000P improved isPuzzleSolved   Min time: 0.074799 ms, Max time: 16.8161 ms, Average Time: 0.0856129 ms, Total: 1.291579 sec
+// time for 10000P.txt -            Min time: 0.2968 ms, Max time: 1.1741 ms, Average Time: 0.468564 ms, Total: 8.292689 sec
 // for 5000P.txt -       Min time: 0.3026 ms, Max time: 1.0865 ms, Average Time: 0.466454 ms, Total: 4.142156 sec
 
 // mac release
