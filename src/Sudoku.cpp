@@ -285,6 +285,7 @@ bool Sudoku::solveOnes(void) {
 		// look through all units and see if any value appears only one time
 		string allValues = "";
 		for (vector<string> ul : unitlist) {
+            allValues = "";
 			for (string u : ul) {
 				allValues += allowableValues[u];
 			}

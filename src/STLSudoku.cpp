@@ -81,6 +81,7 @@ int main()
 	cout << "Min time: " << minTime*1000.0 << " ms, Max time: " << maxTime*1000.0 << " ms, Average Time: " << (double)sumTime / (double)solved * 1000 << " ms, Total: " << total.elapsedString(SEC) << " sec" << endl;
 }
 #endif
+//Min time: 0.06397 ms, Max time: 14.2584 ms, Average Time: 0.080051 ms, Total: 12.063358 sec
 // added break to loops in solve1   Min time: 0.066761 ms, Max time: 34.5678 ms, Average Time: 0.0777364 ms, Total: 11.696870 sec
 // added isSolved to solveones loop Min time: 0.074234 ms, Max time: 9.53254 ms, Average Time: 0.0830398 ms, Total: 12.504442 sec
 // 100000P improved isPuzzleSolved  Min time: 0.078599 ms, Max time: 20.8862 ms, Average Time: 0.0918014 ms, Total: 13.866896 sec
